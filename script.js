@@ -1,16 +1,5 @@
 "use strict";
 
-function findParentByTagName (elem, tagName) {
-  tagName = tagName.toLowerCase();
-  while (elem && elem.parentNode) {
-    elem = elem.parentNode;
-    if (elem.tagName && elem.tagName.toLowerCase() == tagName) {
-      return elem;
-    }
-  }
- return null;
-}
-
 function recordToStr (parent) {
   let str = parent.cells[0].innerText;
      for(let i = 1; i < parent.cells.length - 2; i++){
@@ -49,7 +38,7 @@ function createPopUp (str) {
 }
   
 function showPopUp (target) {  
-  let str = recordToStr(findParentByTagName(target, 'tr'));  
+  let str = recordToStr(target.closest('tr'));  
   document.getElementById('tableOfFilms').insertAdjacentElement('afterend', createPopUp(str));  
 }
 
