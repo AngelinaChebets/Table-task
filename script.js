@@ -1,19 +1,8 @@
 "use strict";
 
-function findParentByTagName (elem, tagName) {
-  tagName = tagName.toLowerCase();
-  while (elem && elem.parentNode) {
-    elem = elem.parentNode;
-    if (elem.tagName && elem.tagName.toLowerCase() == tagName) {
-      return elem;
-    }
-  }
- return null;
-}
-
 function deleteRowFromTable (target) { 
-  let parent = findParentByTagName(target, 'tr');  
-  parent.remove(); 
+  let row = target.closest('tr');  
+  row.remove(); 
 }
 
 tableOfFilms.onclick = function(event){
@@ -22,6 +11,4 @@ tableOfFilms.onclick = function(event){
     deleteRowFromTable(target);
     return;
   }  
-}
-    
-  
+} 
